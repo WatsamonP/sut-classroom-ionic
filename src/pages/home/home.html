@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>HOME</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg">
+  <div *ngFor="let item of courseList; let i = index">
+    <ion-card>
+      <div *ngIf="item.img!='pic'" (click)="showRadio(item.id,item.name,item.img,i,item.groupNo)"
+          style="height: 180px" [style.backgroundColor]="item.img">
+        <div class="card-title">{{item.id}}</div>
+        <div class="card-subtitle"><button ion-button round small color="st-light">{{item.name}}</button></div>
+      </div>
+      <div *ngIf="item.img=='pic'" (click)="showRadio(item.id,item.name,item.img,i,item.groupNo)">
+        <img src="{{'assets/imgs/course/' + i + '.png'}}">
+        <div class="card-title">{{item.id}}</div>
+        <div class="card-subtitle"><button ion-button round small color="st-light">{{item.name}}</button></div>
+      </div>
+
+      <div class="card-button">
+        <ion-row>
+          <ion-col style="text-align: center">
+            <button ion-button icon-left clear small color="light" (click)="showRadio(item.id,item.name,item.img,i,item.groupNo)">
+              <ion-icon name="list-box"></ion-icon>
+              <div>OPTION</div>
+            </button>
+          </ion-col>
+          <ion-col style="text-align: center">
+            <button ion-button icon-left clear small color="light" (click)="selectedCourse(item.id,item.name,i,item.groupNo)">
+              <ion-icon name="add-circle"></ion-icon>
+              <div>เช็คชื่อเข้าเรียน</div>
+            </button>
+          </ion-col>      
+        </ion-row>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>
